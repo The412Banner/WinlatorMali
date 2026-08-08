@@ -22,9 +22,11 @@ buildscript {
 
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.plugin.compose'
 }
+// Store port: applied the legacy way because Kotlin is wired via buildscript{} classpath, not the
+// plugins{} version catalog (same structure Bannerlator uses).
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
 tasks.register("downloadAssets") {
     def assetDir = new File(project.rootDir, ["app","src","main","assets"].join(File.separator))
