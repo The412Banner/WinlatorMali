@@ -32,3 +32,6 @@ Fork: `The412Banner/WinlatorMali` (branch `feat/store-port`) · upstream `GunaCh
   reconcile star↔cmod Container/Shortcut API drift, port StoreStyle + ~7 resources, vendor a few more core
   helpers (ImageFs et al.), then re-layer Epic/Amazon/Steam (+JavaSteam+Goldberg), then the heavy native APK
   build (multi-GB Proton assets + box64/wine/virgl) — which is the WinlatorMali developer's local environment.
+- Pivoted to full-set resolution (Option B: dev builds locally): restored all 82 store files, bridged
+  `star.xenvironment` → `cmod.xenvironment` (cmod has ImageFs), and added the complete matched dependency
+  set (JavaSteam 1.8.0, lifecycle-compose 2.7.0, navigation-compose, zxing 3.5.3, material-icons, coil 2.6.0).

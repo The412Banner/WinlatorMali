@@ -1,7 +1,7 @@
 package com.winlator.star.core
 
 import com.winlator.cmod.container.Container
-import com.winlator.star.xenvironment.ImageFs
+import com.winlator.cmod.xenvironment.ImageFs
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
