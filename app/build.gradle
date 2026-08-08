@@ -12,13 +12,18 @@ buildscript {
     dependencies {
         // Adjust Gradle plugin versions if needed
         classpath 'com.android.tools.build:gradle:8.8.0'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
+        // Store port: bumped 1.9.0 -> 2.0.21 to match the Bannerlator store toolchain (Compose compiler
+        // plugin needs Kotlin 2.0+). WinlatorMali has no .kt of its own yet, so the bump is low-risk.
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21'
+        classpath 'org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.21'
     }
 
 }
 
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 tasks.register("downloadAssets") {
@@ -120,6 +125,14 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
+    // Store port: Kotlin JVM target + Jetpack Compose (matches Bannerlator's store subsystem).
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        compose true
+    }
+
     // Keep Winlator’s buildTypes
     buildTypes {
         debug {
@@ -182,6 +195,19 @@ dependencies {
     implementation 'com.kohlschutter.junixsocket:junixsocket-common:2.6.0'
     implementation 'com.kohlschutter.junixsocket:junixsocket-native-common:2.6.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // --- Store port: Jetpack Compose + coroutines (versions matched to Bannerlator's store subsystem) ---
+    implementation platform('androidx.compose:compose-bom:2024.02.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.foundation:foundation'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    // JavaSteam (Steam store, Phase 3) — add when we reach Steam:
+    // implementation 'in.dragonbra:javasteam:1.8.0'
+    // implementation 'in.dragonbra:javasteam-depotdownloader:1.8.0'
 }
 
 

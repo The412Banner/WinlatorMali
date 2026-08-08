@@ -1,0 +1,27 @@
+name: Store Port — toolchain check
+
+# Lightweight proof that the Kotlin 2.0 + Jetpack Compose toolchain compiles, WITHOUT the multi-GB
+# Proton/imagefs asset download (downloadAssets) or the heavy native (proot/wine/virgl) build.
+# Compiles only the Kotlin sources (currently the Compose smoke test) against the resolved deps.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/store-port]
+    paths:
+      - 'app/build.gradle'
+      - 'app/src/main/java/com/winlator/cmod/store/**'
+      - '.github/workflows/store-port-toolchain-check.yml'
+
+jobs:
+  kotlin-compose-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Compile Kotlin + Compose (skip asset download & native build)
+        run: ./gradlew :app:compileDebugKotlin -x downloadAssets --console=plain --stacktrace
