@@ -207,6 +207,7 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.8.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
     debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation 'io.coil-kt:coil-compose:2.5.0'
     // JavaSteam (Steam store, Phase 3) — add when we reach Steam:
     // implementation 'in.dragonbra:javasteam:1.8.0'
     // implementation 'in.dragonbra:javasteam-depotdownloader:1.8.0'

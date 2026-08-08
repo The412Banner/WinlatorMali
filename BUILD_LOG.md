@@ -25,3 +25,10 @@ Fork: `The412Banner/WinlatorMali` (branch `feat/store-port`) · upstream `GunaCh
 - Trimmed over-copied UI (kept only CollapsibleRail + the Compose theme; dropped the custom font).
 - Reshaped to GOG-first: deferred 50 Steam/Epic/Amazon/Goldberg files (`_deferred_stores/`), leaving GOG
   + the shared download framework (32 files) to reach a compiling state before layering the rest back.
+- Resolution pass 2: the "shared" `DownloadManagerActivity`/`DepotSizeResolver`/`SaveSyncStore`/`QrLoginActivity`
+  turned out to be cross-store (reach into Steam/Epic/Amazon), so deferred them too; restored the theme
+  state files; added coil (Compose image loading). GOG set narrowing toward compile.
+- **Status: partway through the GOG compile-resolution loop.** Remaining known work before a testable APK:
+  reconcile star↔cmod Container/Shortcut API drift, port StoreStyle + ~7 resources, vendor a few more core
+  helpers (ImageFs et al.), then re-layer Epic/Amazon/Steam (+JavaSteam+Goldberg), then the heavy native APK
+  build (multi-GB Proton assets + box64/wine/virgl) — which is the WinlatorMali developer's local environment.
