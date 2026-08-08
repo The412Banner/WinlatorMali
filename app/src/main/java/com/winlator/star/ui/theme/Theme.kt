@@ -28,9 +28,7 @@ private val DefaultColorScheme = darkColorScheme(
     error            = Error,
 )
 
-private val BricolageFontFamily = FontFamily(
-    Font(R.font.bricolage_grotesque),
-)
+private val BricolageFontFamily = FontFamily.Default
 
 private val Default = Typography()
 

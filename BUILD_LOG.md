@@ -22,3 +22,6 @@ Fork: `The412Banner/WinlatorMali` (branch `feat/store-port`) · upstream `GunaCh
   (Compose theme/components, `core` utils, `contents`, `util`).
 - Bridged the container seam + `R` references to `com.winlator.cmod.*`; everything else stays `star`.
 - Next: resolve the compile cascade, port ~7 resources + the Compose theme resources, wire the manifest.
+- Trimmed over-copied UI (kept only CollapsibleRail + the Compose theme; dropped the custom font).
+- Reshaped to GOG-first: deferred 50 Steam/Epic/Amazon/Goldberg files (`_deferred_stores/`), leaving GOG
+  + the shared download framework (32 files) to reach a compiling state before layering the rest back.
