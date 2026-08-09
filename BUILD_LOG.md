@@ -55,3 +55,11 @@ Fork: `The412Banner/WinlatorMali` (branch `feat/store-port`) · upstream `GunaCh
   alias (→ GogMainActivity; dev replaces with an in-app picker).
 - Kicked a full `assembleDebug` CI (heavy: GB Proton/imagefs assets + native box64/wine/virgl tree) to test
   whether a CI APK is even feasible.
+
+### APK build loop (full assembleDebug on CI) — checkpoint
+All 4 stores' Kotlin GREEN; manifest wired (23 activities/services + Stores launcher). Driving the heavy
+`assembleDebug` (GB assets + native tree) via `.github/workflows/store-port-apk.yml`. Fix chain:
+1. plugin syntax (legacy `apply plugin`), 2. Kotlin 2.0.21→2.2.20 (JavaSteam Kotlin-2.2 metadata),
+3. checkout `submodules: recursive` (OpenXR/adrenotools native subdirs), 4. Java deps vendored
+(`Callback`, `OnExtractFileListener`, `StreamUtils`, `StringUtils`). Loop continues until the APK builds,
+then the APK gets attached to release `store-port-v0.1-pre`.
