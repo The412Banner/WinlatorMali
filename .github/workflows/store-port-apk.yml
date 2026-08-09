@@ -23,6 +23,8 @@ jobs:
           sudo docker image prune -a -f || true
           df -h
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -42,3 +44,4 @@ jobs:
           if-no-files-found: error
 
 # retrigger 2026-08-09T00:33:45Z
+# retrigger-submodules 2026-08-09T00:39:18Z
