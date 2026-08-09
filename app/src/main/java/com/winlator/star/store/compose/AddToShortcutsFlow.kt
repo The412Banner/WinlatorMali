@@ -159,8 +159,8 @@ fun AddResultDialog(
  */
 fun openShortcutsScreen(activity: Activity) {
     activity.startActivity(
+        // WinlatorMali is Fragment-based and has no EXTRA_OPEN_SCREEN; just bring the app to front.
         Intent(activity, MainActivity::class.java)
-            .putExtra(MainActivity.EXTRA_OPEN_SCREEN, Screen.Games.route)
             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP),
     )
 }
