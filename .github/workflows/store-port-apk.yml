@@ -6,6 +6,10 @@ name: Store Port — full APK build
 
 on:
   workflow_dispatch:
+  push:
+    branches: [feat/store-port]
+    paths:
+      - '.github/workflows/store-port-apk.yml'
 
 jobs:
   apk:
