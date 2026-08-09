@@ -25,7 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.winlator.star.MainActivity
+import com.winlator.cmod.MainActivity
 import com.winlator.cmod.R
 import com.winlator.cmod.container.Container
 import com.winlator.star.ui.Screen

@@ -679,6 +679,12 @@
     </style>
 
 
+    <!-- Store port -->
+    <style name="StoreAlertDialogDark" parent="@android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">#0277bd</item>
+        <item name="android:windowBackground">#ff1e1e1e</item>
+        <item name="android:textColorPrimary">#ffffffff</item>
+    </style>
 </resources>
     <!--
 

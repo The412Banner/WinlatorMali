@@ -3,7 +3,7 @@ package com.winlator.star.store
 import android.content.Context
 import android.os.PowerManager
 import android.util.Log
-import com.winlator.star.BuildConfig
+import com.winlator.cmod.BuildConfig
 import com.winlator.star.store.download.DownloadEntry
 import com.winlator.star.store.download.DownloadRegistry
 import com.winlator.star.store.download.DownloadState
