@@ -1,0 +1,38 @@
+name: Store Port — full APK build
+
+# Attempts the FULL debug APK: downloads the multi-GB Proton/imagefs assets and compiles the native
+# tree (box64/wine/virgl/OpenXR/proot) + Java + Kotlin. This is the heavy build; it may exceed the
+# runner's disk/time. If it succeeds, the APK is uploaded as an artifact.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" \
+                      /usr/local/lib/android/sdk/ndk /opt/hostedtoolcache/CodeQL || true
+          sudo docker image prune -a -f || true
+          df -h
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Install pinned NDK + CMake
+        run: |
+          yes | sdkmanager "ndk;29.0.14206865" "cmake;3.22.1" "build-tools;35.0.0" >/dev/null 2>&1 || true
+      - name: assembleDebug (downloads assets + native build)
+        run: ./gradlew :app:assembleDebug --console=plain --stacktrace --no-daemon
+      - name: Upload APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WinlatorMali-storeport-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
