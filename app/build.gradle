@@ -14,8 +14,8 @@ buildscript {
         classpath 'com.android.tools.build:gradle:8.8.0'
         // Store port: bumped 1.9.0 -> 2.0.21 to match the Bannerlator store toolchain (Compose compiler
         // plugin needs Kotlin 2.0+). WinlatorMali has no .kt of its own yet, so the bump is low-risk.
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21'
-        classpath 'org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.21'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20'
+        classpath 'org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.20'
     }
 
 }
@@ -155,9 +155,9 @@ android {
     // (JavaSteam/coil transitively drag in Kotlin-2.2-metadata jars, which a 2.0 compiler rejects).
     configurations.all {
         resolutionStrategy {
-            force 'org.jetbrains.kotlin:kotlin-stdlib:2.0.21'
-            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.21'
-            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.21'
+            force 'org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.20'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.2.20'
             force 'com.squareup.okio:okio:3.6.0'
         }
     }
