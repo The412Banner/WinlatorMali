@@ -151,6 +151,17 @@ android {
         abortOnError false
     }
 
+    // Store port: pin Kotlin stdlib + okio to versions whose metadata our Kotlin 2.0.21 compiler can read
+    // (JavaSteam/coil transitively drag in Kotlin-2.2-metadata jars, which a 2.0 compiler rejects).
+    configurations.all {
+        resolutionStrategy {
+            force 'org.jetbrains.kotlin:kotlin-stdlib:2.0.21'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.21'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.21'
+            force 'com.squareup.okio:okio:3.6.0'
+        }
+    }
+
 
     ndkVersion '29.0.14206865'
 
