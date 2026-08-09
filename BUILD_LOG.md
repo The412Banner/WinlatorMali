@@ -35,3 +35,15 @@ Fork: `The412Banner/WinlatorMali` (branch `feat/store-port`) · upstream `GunaCh
 - Pivoted to full-set resolution (Option B: dev builds locally): restored all 82 store files, bridged
   `star.xenvironment` → `cmod.xenvironment` (cmod has ImageFs), and added the complete matched dependency
   set (JavaSteam 1.8.0, lifecycle-compose 2.7.0, navigation-compose, zxing 3.5.3, material-icons, coil 2.6.0).
+
+### Phase 1 → handoff (Option B: developer builds the Mali APK)
+- Kotlin bumped 2.0.21 → **2.2.20** (+ Compose-compiler 2.2.20) — JavaSteam 1.8.0 ships Kotlin-2.2 metadata a
+  2.0 compiler can't read. This cleared all 251 metadata errors.
+- Full dep set matched to Bannerlator; `resolutionStrategy` pins stdlib/okio.
+- Bridged `star.{container,xenvironment,MainActivity,BuildConfig,R}` → `cmod.*`; ported `StoreAlertDialogDark`
+  style + `icon_menu_container` drawable; vendored `FilePickerActivity`.
+- **Compile reduced 250+ → 8 unresolved refs**, all documented in `INTEGRATION_GUIDE.md` (final star↔cmod API
+  drift + FilePicker cascade — fastest resolved by the dev with cmod in front of them).
+- **Handoff:** branch is build-ready pending (a) the 8 API-drift fixes, (b) manifest registration of the 24
+  store Activities/services, (c) a "Stores" entry point. Full APK = the dev's local `assembleDebug`
+  (multi-GB Proton assets + native tree). See INTEGRATION_GUIDE.md.
