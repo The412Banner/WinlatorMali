@@ -33,6 +33,7 @@
     <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission
@@ -150,5 +151,101 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="emulator"/>
         </service>
+
+<!-- ===== Store port: vendored store Activities/services ===== -->
+        <activity 
+            android:exported="false"
+            android:name="com.winlator.star.store.GogMainActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity 
+            android:exported="false"
+            android:name="com.winlator.star.store.GogLoginActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity 
+            android:exported="false"
+            android:name="com.winlator.star.store.GogGamesActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity 
+            android:exported="false"
+            android:name="com.winlator.star.store.EpicMainActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.EpicLoginActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.EpicGamesActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.AmazonMainActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity 
+            android:exported="false"
+            android:name="com.winlator.star.store.AmazonLoginActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity 
+            android:exported="false"
+            android:name="com.winlator.star.store.AmazonGamesActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.GogGameDetailActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.EpicGameDetailActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.EpicFreeGamesActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.AmazonGameDetailActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:exported="false"
+            android:name="com.winlator.star.store.FolderPickerActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"/>
+        <activity android:name="com.winlator.star.store.SteamMainActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme"/>
+        <activity android:name="com.winlator.star.store.SteamLoginActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme"/>
+        <activity android:name="com.winlator.star.store.SteamGamesActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme"/>
+        <activity android:name="com.winlator.star.store.SteamGameDetailActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme"/>
+        <activity android:name="com.winlator.star.store.DownloadManagerActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme"/>
+        <activity android:name="com.winlator.star.store.SteamSaveManagerActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|density|navigation"/>
+        <activity android:name="com.winlator.star.store.QrLoginActivity" android:exported="false" android:screenOrientation="fullSensor" android:theme="@style/AppTheme"/>
+        <service android:name="com.winlator.star.store.SteamForegroundService" android:foregroundServiceType="dataSync" android:exported="false"/>
+        <service android:name="com.winlator.star.store.download.DownloadForegroundService" android:foregroundServiceType="dataSync" android:exported="false"/>
+
+        <!-- Store port: minimal entry point (separate launcher icon). Dev: replace with an in-app
+             "Stores" button in MainActivity that starts Gog/Epic/Amazon/SteamMainActivity. -->
+        <activity-alias
+            android:name="com.winlator.cmod.StoresLauncher"
+            android:targetActivity="com.winlator.star.store.GogMainActivity"
+            android:label="Stores"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
     </application>
 </manifest>

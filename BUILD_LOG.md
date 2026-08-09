@@ -47,3 +47,11 @@ Fork: `The412Banner/WinlatorMali` (branch `feat/store-port`) · upstream `GunaCh
 - **Handoff:** branch is build-ready pending (a) the 8 API-drift fixes, (b) manifest registration of the 24
   store Activities/services, (c) a "Stores" entry point. Full APK = the dev's local `assembleDebug`
   (multi-GB Proton assets + native tree). See INTEGRATION_GUIDE.md.
+
+### Phase 1 — Kotlin GREEN + manifest wired (pushing for a real APK)
+- All 8 final API-drift refs resolved (buildConfig gen, extracted `downloadToCache` helper, SAF-based
+  `InAppFilePicker` replacing the in-app FilePicker, simplified shortcuts-open). **Kotlin compiles clean.**
+- Manifest: registered 23 store Activities/services + `FOREGROUND_SERVICE_DATA_SYNC` + a "Stores" launcher
+  alias (→ GogMainActivity; dev replaces with an in-app picker).
+- Kicked a full `assembleDebug` CI (heavy: GB Proton/imagefs assets + native box64/wine/virgl tree) to test
+  whether a CI APK is even feasible.
